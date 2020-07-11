@@ -1,6 +1,7 @@
 import React from 'react';
 import Task from './task';
 import styled from '@emotion/styled';
+import AddTask from './addTask';
 
 const Container = styled.div`
   display: grid;
@@ -13,8 +14,7 @@ const Tasks = () => {
     <Container>
       <Task />
       <Task />
-      <Task />
-      <Task />
+      <AddTask />
     </Container>
   );
 };

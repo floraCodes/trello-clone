@@ -12,8 +12,6 @@ const Main = () => {
   return (
     <Container>
       <List />
-      <List />
-      <List />
     </Container>
   );
 };
