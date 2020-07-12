@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from './components/layout';
-import { appData } from './utils/data';
 
 function App() {
-  const [data, setData] = useState(appData);
-
-  return <Layout data={data} setData={setData} />;
+  return <Layout />;
 }
 
 export default App;

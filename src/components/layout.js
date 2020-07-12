@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
 import React from 'react';
 import Header from './header';
 import Main from './main';
-import styled from '@emotion/styled';
 
 const Container = styled.div`
   font-family: 'Roboto';

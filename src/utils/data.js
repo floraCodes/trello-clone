@@ -6,32 +6,37 @@ export const appData = {
   tasks: {
     'task-1': {
       id: 'task-1',
-      content: 'Groceries Shopping',
-      completed: 'false'
+      title: 'Groceries Shopping'
     },
     'task-2': {
       id: 'task-2',
-      content: 'Yoga and Gym (Exercising)',
-      completed: 'false'
+      title: 'Yoga and Gym'
     },
     'task-3': {
       id: 'task-3',
-      content: 'Walk the dog (Dog gym)',
-      completed: 'false'
+      title: 'Walk the dog '
     },
     'task-4': {
       id: 'task-4',
-      content: 'Cook lunch and dinner',
-      completed: 'false'
+      title: 'Cook lunch and dinner'
+    },
+    'task-5': {
+      id: 'task-5',
+      title: 'Organize Sushi '
     }
   },
-  columns: {
+  lists: {
     'column-1': {
       id: 'column-1',
       title: 'To do',
       taskIds: ['task-1', 'task-2', 'task-3', 'task-4']
+    },
+    'column-2': {
+      id: 'column-2',
+      title: 'Done',
+      taskIds: ['task-5']
     }
   },
   // Facilitate reordering of the columns
-  columnOrder: ['column-1']
+  listOrder: ['column-1', 'column-2']
 };
