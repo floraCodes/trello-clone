@@ -15,9 +15,9 @@ const List = ({ list, tasks }) => {
   const { id, title, taskIds } = list;
 
   return (
-    <Container class="list">
+    <Container>
       <ListTitle title={title} listId={id} />
-      <Tasks taskIds={taskIds} tasks={tasks} />
+      <Tasks taskIds={taskIds} tasks={tasks} listId={id} />
     </Container>
   );
 };

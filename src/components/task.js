@@ -16,12 +16,14 @@ const Task = ({ task }) => {
   };
 
   const handleBlur = () => {
-    changeTaskTitle(newTitle, id);
+    newTitle ? changeTaskTitle(newTitle, id) : setNewTitle(title);
     setOpen(!open);
   };
 
+  const handleKeyDown = (e) => [e.key === 'Enter' && handleBlur()];
+
   return (
-    <Container class="task">
+    <Container>
       {open ? (
         <FormContainer>
           <TitleInput
@@ -29,6 +31,7 @@ const Task = ({ task }) => {
             value={newTitle}
             onChange={handleChange}
             onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
           />
         </FormContainer>
       ) : (

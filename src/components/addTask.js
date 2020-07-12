@@ -1,25 +1,43 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import myContext from '../utils/myContext';
 
-const AddTask = () => {
+const AddTask = ({ listId }) => {
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState('');
+
+  const { createNewTask } = useContext(myContext);
 
   const handleClick = () => setOpen(!open);
 
-  const handleBlur = () => {
-    setOpen(!open);
+  const handleChange = (e) => {
+    setTitle(e.target.value);
   };
 
+  const handleSubmit = () => {
+    console.log('hey');
+    createNewTask(title, listId);
+    setTitle('');
+    setOpen(!open);
+  };
+  const handleBlur = () => {
+    title ? handleSubmit() : setOpen(!open);
+  };
   return (
     <Container>
       {open ? (
         <FormContainer>
           <Input
-            autoFocus
             placeholder="Enter a title for this card..."
+            value={title}
+            onChange={handleChange}
             onBlur={handleBlur}
+            autoFocus
           />
-          <Button onClick={handleClick}>Add Task</Button>
+          <ButtonsContainer>
+            <Button>Add Task</Button>
+            <CloseIcon onMouseDown={handleClick}>x</CloseIcon>
+          </ButtonsContainer>
         </FormContainer>
       ) : (
         <Paragraph onClick={handleClick}>+ Add New Task</Paragraph>
@@ -67,6 +85,19 @@ const Input = styled.textarea`
   font-family: inherit;
   font-size: inherit;
 `;
+const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+const CloseIcon = styled.span`
+  background: #d7d8db;
+  padding: 0.5rem;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const Button = styled.button`
   border: none;
   background: lightgreen;
