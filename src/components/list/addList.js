@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import ListTitleForm from './listTitleForm';
 
 const Container = styled.article`
   font-family: inherit;
@@ -22,9 +23,14 @@ const Paragraph = styled.p`
 `;
 
 const AddList = () => {
+  const [open, setOpen] = useState(false);
   return (
     <Container>
-      <Paragraph>+Add New List</Paragraph>
+      {open ? (
+        <ListTitleForm open={open} setOpen={setOpen} type="newList" title="" />
+      ) : (
+        <Paragraph onClick={() => setOpen(!open)}>+Add New List</Paragraph>
+      )}
     </Container>
   );
 };
