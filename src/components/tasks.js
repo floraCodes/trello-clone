@@ -9,14 +9,14 @@ const Container = styled.div`
   padding-bottom: 0.4rem;
 `;
 
-const Tasks = ({ taskIds, tasks }) => {
+const Tasks = ({ listId, taskIds, tasks }) => {
   return (
     <Container>
       {taskIds.map((taskId) => {
         const task = tasks[taskId];
         return <Task key={taskId} task={task} />;
       })}
-      <AddTask />
+      <AddTask listId={listId} />
     </Container>
   );
 };
