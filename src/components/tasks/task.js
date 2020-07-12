@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import styled from '@emotion/styled';
-import myContext from '../utils/myContext';
+import myContext from '../../utils/myContext';
 
 const Task = ({ task }) => {
   const { id, title } = task;

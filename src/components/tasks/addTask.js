@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useState, useContext } from 'react';
-import myContext from '../utils/myContext';
+import myContext from '../../utils/myContext';
 
 const AddTask = ({ listId }) => {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,6 @@ const AddTask = ({ listId }) => {
   };
 
   const handleSubmit = () => {
-    console.log('hey');
     createNewTask(title, listId);
     setTitle('');
     setOpen(!open);

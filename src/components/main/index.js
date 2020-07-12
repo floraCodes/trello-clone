@@ -4,14 +4,31 @@ import { appData } from '../../utils/data';
 import MyContext from '../../utils/myContext';
 import { Container } from './mainCss';
 import { v4 as uuidv4 } from 'uuid';
-import AddList from '../addList';
+import AddList from '../list/addList';
 
 const Main = () => {
   const [data, setData] = useState(appData);
   const { tasks, lists, listOrder } = data;
 
-  const createNewList = (title) => {
-    console.log('creating new list');
+  const createNewList = (listTitle) => {
+    const listId = uuidv4();
+    const newList = {
+      [listId]: {
+        id: listId,
+        title: listTitle,
+        taskIds: []
+      }
+    };
+
+    const newData = {
+      ...data,
+      lists: {
+        ...lists,
+        ...newList
+      },
+      listOrder: [...listOrder, listId]
+    };
+    setData(newData);
   };
 
   const createNewTask = (title, listId) => {
