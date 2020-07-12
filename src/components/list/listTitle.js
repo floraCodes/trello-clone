@@ -15,13 +15,6 @@ const Title = styled.h2`
   color: #172b4d;
 `;
 
-// const Button = styled.button`
-//   border: none;
-//   background: lightgreen;
-//   padding: 0.3rem 0.5rem;
-//   margin-left: 0.3rem;
-// `;
-
 const ListTitle = ({ listId, title }) => {
   const [open, setOpen] = useState(false);
 
