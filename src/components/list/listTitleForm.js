@@ -7,7 +7,7 @@ const FormContainer = styled.div`
 `;
 
 const TitleInput = styled.input`
-  width: 100%;
+  width: 15rem;
   border: none;
   border-radius: 0.2rem;
   padding: 0.3rem 0;
@@ -31,7 +31,7 @@ const ListTitleForm = ({ listId, title, open, setOpen, type }) => {
     if (type === 'editList') {
       changeListTilte(newTitle, listId);
     } else {
-      createNewList(newTitle);
+      newTitle && createNewList(newTitle);
     }
     setOpen(!open);
   };
