@@ -36,6 +36,8 @@ const ListTitleForm = ({ listId, title, open, setOpen, type }) => {
     setOpen(!open);
   };
 
+  const handleKeyDown = (e) => [e.key === 'Enter' && handleBlur()];
+
   return (
     <FormContainer>
       <TitleInput
@@ -43,6 +45,7 @@ const ListTitleForm = ({ listId, title, open, setOpen, type }) => {
         value={newTitle}
         onChange={handleChange}
         onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
       />
     </FormContainer>
   );
