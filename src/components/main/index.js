@@ -32,14 +32,14 @@ const Main = () => {
     setData(newData);
   };
 
-  const createNewTask = (title, listId) => {
+  const createNewTask = (taskTitle, listId) => {
     const taskId = uuidv4();
     const list = lists[listId];
 
     const newTask = {
       [taskId]: {
         id: taskId,
-        title: title
+        title: taskTitle
       }
     };
 
@@ -92,30 +92,63 @@ const Main = () => {
     const { destination, source, draggableId } = result;
 
     if (!destination) return;
+
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
     ) {
       return;
     }
-    const list = lists[source.droppableId];
-    const newTaskIds = Array.from(list.taskIds);
 
-    newTaskIds.splice(source.index, 1);
-    newTaskIds.splice(destination.index, 0, draggableId);
+    if (source.droppableId === destination.droppableId) {
+      const list = lists[source.droppableId];
+      const newTaskIds = Array.from(list.taskIds);
 
-    const newList = {
-      ...list,
-      taskIds: newTaskIds
-    };
+      newTaskIds.splice(source.index, 1);
+      newTaskIds.splice(destination.index, 0, draggableId);
 
-    setData({
-      ...data,
-      lists: {
-        ...lists,
-        [newList.id]: newList
-      }
-    });
+      const newList = {
+        ...list,
+        taskIds: newTaskIds
+      };
+
+      setData({
+        ...data,
+        lists: {
+          ...lists,
+          [newList.id]: newList
+        }
+      });
+    } else {
+      const sourceList = lists[source.droppableId];
+      const destinationList = lists[destination.droppableId];
+
+      const sourceTaskIds = Array.from(sourceList.taskIds);
+      const destinationTaskIds = Array.from(destinationList.taskIds);
+
+      sourceTaskIds.splice(source.index, 1);
+      destinationTaskIds.splice(destination.index, 0, draggableId);
+
+      const newSourceList = {
+        ...sourceList,
+        taskIds: sourceTaskIds
+      };
+      const newDestinationList = {
+        ...destinationList,
+        taskIds: destinationTaskIds
+      };
+
+      const newData = {
+        ...data,
+        lists: {
+          ...lists,
+          [sourceList.id]: newSourceList,
+          [destinationList.id]: newDestinationList
+        }
+      };
+
+      setData(newData);
+    }
   };
 
   return (

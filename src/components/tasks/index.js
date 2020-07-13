@@ -20,7 +20,6 @@ const Tasks = ({ listId, taskIds, tasks }) => {
             return <Task key={taskId} task={task} index={index} />;
           })}
           {provided.placeholder}
-
           <AddTask listId={listId} />
         </Container>
       )}
