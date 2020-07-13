@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ListTitleForm from './listTitleForm';
+import ListTitleForm from '../listTitleForm';
 import { Container, Paragraph } from './addListCss';
 
 const AddList = () => {

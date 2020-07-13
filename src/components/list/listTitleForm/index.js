@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import myContext from '../../utils/myContext';
+import myContext from '../../../utils/myContext';
 import { FormContainer, TitleInput } from './listTitleFormCss';
 
 const ListTitleForm = ({ listId, title, open, setOpen, type }) => {
