@@ -1,14 +1,8 @@
-import styled from '@emotion/styled';
 import React from 'react';
+import { Droppable } from 'react-beautiful-dnd';
 import AddTask from './addTask';
 import Task from './task';
-import { Droppable } from 'react-beautiful-dnd';
-
-const Container = styled.div`
-  display: grid;
-  gap: 0.4rem;
-  padding-bottom: 0.4rem;
-`;
+import { Container } from './tasksCss';
 
 const Tasks = ({ listId, taskIds, tasks }) => {
   return (

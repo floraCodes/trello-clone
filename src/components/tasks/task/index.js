@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
-import styled from '@emotion/styled';
-import myContext from '../../utils/myContext';
+import React, { useContext, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import myContext from '../../../utils/myContext';
+import { Container, FormContainer, TitleInput, Title } from './taskCss';
 
 const Task = ({ task, index }) => {
   const { id, title } = task;
@@ -56,35 +56,3 @@ const Task = ({ task, index }) => {
 };
 
 export default Task;
-
-const Container = styled.article`
-  border-radius: 0.2rem;
-  background-color: ${(props) => (props.isDragging ? 'pink' : 'white')};
-  margin: 0 0.4rem;
-  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-  width: 15rem;
-  &:hover {
-    cursor: pointer;
-    background: #f4f5f7;
-  }
-`;
-
-const Title = styled.h4`
-  margin: 0;
-  padding: 0.4rem;
-  font-weight: 400;
-  font-size: 14px;
-`;
-
-const FormContainer = styled.div`
-  margin-bottom: 0.4rem;
-`;
-
-const TitleInput = styled.input`
-  border: none;
-  border-radius: 0.2rem;
-  padding: 0.4rem 0 0.04rem 0;
-  margin: 0 0.4rem;
-  background: transparent;
-  font-size: 14px;
-`;
