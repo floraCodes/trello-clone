@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import ListTitle from './listTitle';
 import Tasks from '../tasks';
+import ListTitle from './listTitle';
 
 const Container = styled.article`
   gap: 0.5rem;

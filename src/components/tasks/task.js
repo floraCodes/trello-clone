@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import styled from '@emotion/styled';
 import myContext from '../../utils/myContext';
+import { Draggable } from 'react-beautiful-dnd';
 
-const Task = ({ task }) => {
+const Task = ({ task, index }) => {
   const { id, title } = task;
 
   const [open, setOpen] = useState(false);
@@ -23,21 +24,34 @@ const Task = ({ task }) => {
   const handleKeyDown = (e) => [e.key === 'Enter' && handleBlur()];
 
   return (
-    <Container>
+    <div>
       {open ? (
-        <FormContainer>
-          <TitleInput
-            autoFocus
-            value={newTitle}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            onKeyDown={handleKeyDown}
-          />
-        </FormContainer>
+        <Container>
+          <FormContainer>
+            <TitleInput
+              autoFocus
+              value={newTitle}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              onKeyDown={handleKeyDown}
+            />
+          </FormContainer>
+        </Container>
       ) : (
-        <Title onClick={handleClick}>{newTitle}</Title>
+        <Draggable draggableId={id} index={index}>
+          {(provided, snapshot) => (
+            <Container
+              isDragging={snapshot.isDragging}
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              <Title onClick={handleClick}>{newTitle}</Title>
+            </Container>
+          )}
+        </Draggable>
       )}
-    </Container>
+    </div>
   );
 };
 
@@ -45,7 +59,7 @@ export default Task;
 
 const Container = styled.article`
   border-radius: 0.2rem;
-  background-color: #fff;
+  background-color: ${(props) => (props.isDragging ? 'pink' : 'white')};
   margin: 0 0.4rem;
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   width: 15rem;
@@ -69,7 +83,7 @@ const FormContainer = styled.div`
 const TitleInput = styled.input`
   border: none;
   border-radius: 0.2rem;
-  padding: 0.4rem 0 0.05rem 0;
+  padding: 0.4rem 0 0.04rem 0;
   margin: 0 0.4rem;
   background: transparent;
   font-size: 14px;
